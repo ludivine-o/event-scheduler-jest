@@ -6,6 +6,12 @@
     "start": "nodemon bin/www --exec babel-node",
     "test": "jest"
   },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": ["src/*.{js, jsx}"],
+    "coverageDirecory": ["test/coverage"],
+    "coverageProvider": "babel"
+  },
   "dependencies": {
     "bootstrap": "^4.4.1",
     "cookie-parser": "~1.4.4",
