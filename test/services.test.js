@@ -27,7 +27,9 @@ describe("Event Service", () => {
     const fullFakeEvents = [
         new Event(new Date('2019-12-17T03:24:00'), new Date('2019-12-17T13:24:00'), "Hello World", "Campus Numerique", "This is an hello world.."),
         new Event(new Date('2018-12-17T03:24:00'), new Date('1995-12-17T03:24:00'), "First event", "Campus Numerique", "This is an hello world.."),
+        new Event(new Date('2020-04-01T09:00:00'), new Date('2020-04-01T17:00:00'), "Unit test againt", "Campus Numerique", "This is an hello world.."),
         new Event(new Date('2020-04-01T09:00:00'), new Date('2020-04-01T17:00:00'), "Unit test againt", "Campus Numerique", "This is an hello world..")
+
     ];
     const emptyFakeEvent = []
     const nullFakeEvent = null
@@ -39,10 +41,10 @@ describe("Event Service", () => {
         expect(EventRepository).toHaveBeenCalledTimes(1);
     })
 
-    test('getEvents shall return 3 result', async () => {
+    test('getEvents shall return 4 result', async () => {
         fakeEvents = fullFakeEvents;
         let eventService = new EventService(new EventRepository());
-        expect(eventService.getEvents().length).toBe(3);
+        expect(eventService.getEvents().length).toBe(4);
     })
 
     test('getEvents sahll return null if repo is empty', async () => {
@@ -113,7 +115,7 @@ describe("Event Service", () => {
           new Date('2020-04-01T09:01:58').valueOf()
         );
         let eventService = new EventService(new EventRepository());
-        expect(eventService.getCurrentEvents()).toStrictEqual([fakeEvents[2]]);
+        expect(eventService.getCurrentEvents()).toStrictEqual([fakeEvents[2],fakeEvents[3]]);
     })
 
     test('sanitiseEvent shall return a cleaned event', async () => {

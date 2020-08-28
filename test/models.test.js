@@ -24,4 +24,5 @@ describe("Event Entity",()=> {
         let event = eventBuilder();
         expect(event.getLocation()).toBe("Campus Numerique");
     })
+
 });
