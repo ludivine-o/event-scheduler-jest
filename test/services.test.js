@@ -20,6 +20,7 @@ describe("Event Service", () => {
                 }
             }
         });
+        
     });
 
     let fakeEvents;
@@ -106,8 +107,13 @@ describe("Event Service", () => {
 
     test('getCurrentEvents shall return the specified event', async () => {
         fakeEvents = fullFakeEvents;
+        jest
+        .spyOn(global.Date, 'now')
+        .mockImplementationOnce(() =>
+          new Date('2020-04-01T09:01:58').valueOf()
+        );
         let eventService = new EventService(new EventRepository());
-        expect(eventService.getCurrentEvents()).toStrictEqual([]);
+        expect(eventService.getCurrentEvents()).toStrictEqual([fakeEvents[2]]);
     })
 
     test('sanitiseEvent shall return a cleaned event', async () => {
